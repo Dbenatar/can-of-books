@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
+import NewBook from "./components/NewBook";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -14,6 +15,7 @@ function App() {
     const axiosRes = await axios.get(API);
     setBooks(axiosRes.data);
   }
+
   return (
     <>
       {books.map(({ _id, name, author, genre, yearPublished, blurb }) => {
@@ -28,6 +30,8 @@ function App() {
           </div>
         );
       })}
+
+      <NewBook></NewBook>
     </>
   );
 }
