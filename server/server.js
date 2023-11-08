@@ -22,7 +22,7 @@ app.get("/books", async (req, res) => {
 });
 
 app.post("/books", async (req, res) => {
-  const newBook = await Book.create(req.body);
+  const newBook = await Book.create(req.body); //this add stuff to the db
   res.json(newBook);
 });
 

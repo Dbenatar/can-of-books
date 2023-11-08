@@ -31,7 +31,7 @@ function App() {
         );
       })}
 
-      <NewBook></NewBook>
+      <NewBook books={books} setBooks={setBooks}></NewBook>
     </>
   );
 }
