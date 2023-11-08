@@ -32,7 +32,8 @@ app.delete("/books/:id", async (req, res) => {
 });
 
 app.put("/books/:id", async (req, res) => {
-  
+  const updatedBook = await Book.findByIdAndUpdate(req.params.id, req.body);
+  res.json(updatedBook);
 });
 
 app.listen(PORT, () => {

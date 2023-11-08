@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import NewBook from "./components/NewBook";
+import SingleBook from "./components/SingleBook";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -29,21 +30,16 @@ function App() {
     <>
       {books.map(({ _id, name, author, genre, yearPublished, blurb }) => {
         return (
-          <div key={_id}>
-            <h1>{name}</h1>
-            <h2>{author}</h2>
-            <h3>
-              {genre}, {yearPublished}
-            </h3>
-            <p>{blurb}</p>
-            <button
-              onClick={() => {
-                handleDeleteButton(_id);
-              }}
-            >
-              Delete
-            </button>
-          </div>
+          <SingleBook
+            key={_id}
+            _id={_id}
+            name={name}
+            author={author}
+            genre={genre}
+            yearPublished={yearPublished}
+            blurb={blurb}
+            handleDeleteButton={handleDeleteButton}
+          />
         );
       })}
 
