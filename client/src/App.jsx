@@ -16,6 +16,15 @@ function App() {
     setBooks(axiosRes.data);
   }
 
+  async function handleDeleteButton(id) {
+    const check = confirm("Are you sure?");
+    if (check) {
+      const API = `http://localhost:8080/books/${id}`;
+      const axiosRes = await axios.delete(API);
+      getBook();
+    }
+  }
+
   return (
     <>
       {books.map(({ _id, name, author, genre, yearPublished, blurb }) => {
@@ -27,6 +36,13 @@ function App() {
               {genre}, {yearPublished}
             </h3>
             <p>{blurb}</p>
+            <button
+              onClick={() => {
+                handleDeleteButton(_id);
+              }}
+            >
+              Delete
+            </button>
           </div>
         );
       })}
